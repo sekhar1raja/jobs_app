@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detailpage.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -107,48 +109,60 @@ class JobDetailCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 200,
-              child: Image.asset(
-                job.photo,
-                fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => JobDetailPage(job: job),
+            ),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 200,
+                child: Image.asset(
+                  job.photo,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Title: ${job.title}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Location: ${job.location}',
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Salary: \$${job.salary.toString()}',
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Description: ${job.description}',
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Apply button action
-              },
-              child: const Text('Apply Now'),
-            ),
-          ],
+              const SizedBox(height: 16),
+              Text(
+                'Title: ${job.title}',
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Location: ${job.location}',
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Salary: \$${job.salary.toString()}',
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Description: ${job.description}',
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  // Apply button action
+                },
+                child: const Text('Apply Now'),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+
