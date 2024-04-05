@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'contactpage.dart';
 import 'detailpage.dart';
 
 void main() => runApp(const MyApp());
@@ -151,10 +152,15 @@ class JobDetailCard extends StatelessWidget {
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  // Apply button action
-                },
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ApplyNowPage(job: job),
+                  ),
+                );
+              },
                 child: const Text('Apply Now'),
               ),
             ],
